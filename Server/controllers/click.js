@@ -9,31 +9,30 @@ clickRouter.get('/', (req,res) => {
         })
 })
 
-clickRouter.patch('/', (req,res) => {
-    //const id = process.env.CLICK_ID
+function checkPrize(clickAmount){
 
-    // GLOBAL VARIABLE THAT IS SET ON STARTUP
+    if(clickAmount % 500 === 0){
+        return 250
+    }else if(clickAmount % 100 === 0){
+        return 40
+    }else if(clickAmount % 10 === 0){
+        return 5
+    }else{
+        return 0
+    }
+}
+
+clickRouter.patch('/', (req,res) => {
+    // GLOBAL VARIABLE THAT IS SET ON STARTUP (dbSetup.js)
     const id = clickID
 
     Click
         .findByIdAndUpdate(id, { $inc: { amount: 1 } }, {new: true } )
         .then(update => {
-            res.json(update.toJSON())
+            console.log(update.amount)
+            //res.json(update.toJSON())
+            res.json({"points" : checkPrize(update.amount)})
         })
 })
-
-// clickRouter.post('/', (req,res) =>{
-
-//     const newClick = new Click ({
-//         amount: 0
-//     })
-
-
-//     newClick
-//         .save()
-//         .then(result => {
-//             res.status(201).json(result)
-//     })
-// })
 
 module.exports = clickRouter

@@ -10,5 +10,5 @@ server.listen(config.PORT, () => {
 
 // Automatically check if collection exsists and creates one if there is none 
 const dbSetup = require('./utils/dbSetup')
-dbSetup()
+dbSetup.setupClicksDB()
 

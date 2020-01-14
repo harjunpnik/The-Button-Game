@@ -75,4 +75,4 @@ function setupClicksDB(){
     })
 }
 
-module.exports = setupClicksDB
+module.exports = { setupClicksDB }

@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 
+mongoose.set('useFindAndModify', false) 
+
 const clickSchema = new mongoose.Schema({
     amount: Number,
 })

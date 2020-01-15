@@ -12,10 +12,13 @@ const mongoUrl = config.MONGODB_URI
 mongoose.connect(mongoUrl, { useNewUrlParser: true , useUnifiedTopology: true})
 
 const clickRouter = require('./controllers/click')
+const userRouter = require('./controllers/user')
 
 app.use(cors())
 app.use(bodyParser.json())
 
 app.use('/api/click', clickRouter)
+app.use('/api/user', userRouter)
+
 
 module.exports = app

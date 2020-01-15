@@ -31,7 +31,8 @@ clickRouter.patch('/', (req,res) => {
         .then(update => {
             console.log(update.amount)
             //res.json(update.toJSON())
-            res.json({"points" : checkPrize(update.amount)})
+
+            res.json({"reward" : checkPrize(update.amount)})
         })
 })
 

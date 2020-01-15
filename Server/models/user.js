@@ -2,16 +2,16 @@ const mongoose = require('mongoose')
 
 mongoose.set('useFindAndModify', false) 
 
-const clickSchema = new mongoose.Schema({
-    amount: Number,
+const userSchema = new mongoose.Schema({
+    points: Number,
 })
 
-clickSchema.set('toJSON', {
+userSchema.set('toJSON', {
     transform: (document, returnedObject) => {
-      //returnedObject.id = returnedObject._id.toString()
+      returnedObject.id = returnedObject._id.toString()
       delete returnedObject._id
       delete returnedObject.__v
     }
 })
 
-module.exports = mongoose.model('Click', clickSchema)
+module.exports = mongoose.model('User', userSchema)

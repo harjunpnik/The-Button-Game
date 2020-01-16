@@ -13,12 +13,14 @@ mongoose.connect(mongoUrl, { useNewUrlParser: true , useUnifiedTopology: true})
 
 const clickRouter = require('./controllers/click')
 const userRouter = require('./controllers/user')
+const errorHandler = require('./controllers/error')
 
 app.use(cors())
 app.use(bodyParser.json())
 
 app.use('/api/click', clickRouter)
 app.use('/api/user', userRouter)
+app.use(errorHandler)
 
 
 module.exports = app

@@ -28,66 +28,59 @@ clickRouter.patch('/:id', (req,res, next) => {
 
     // Check users points before incrementing counter
     let startingPoints = 0
+    let userFound = false
     User
         .findById(userId)
         .then(u =>{
             if(u){
                 startingPoints = u.points
+                userFound = true
             }else{
                 // User not found
-                return res.status(404).send({ error: 'Not Found' }) 
+                return res.status(404).json({ error: 'User not Found' }) 
             }
+        })
+        .then(()=>{
+
+            // if Not enough points and user was found
+            if(startingPoints < 1 && userFound){
+                return res.status(400).json({'Error' : 'Users points are insufficient'})
+
+            // if enough points and user was found
+            }else if (userFound){
+                // Increment clicks 
+                Click
+                    .findByIdAndUpdate( id, { $inc: { amount: 1 } }, {new: true } )
+                    .then(update => {
+                        // Check what prize to give based on clicks
+                        const prize = checkPrize(update.amount)   
+                        const clicksToNextPrize = 10 - (update.amount % 10)
+
+                        if(prize == 0){
+                            // Find user by id and decrease points
+                            User
+                                .findByIdAndUpdate( userId, { $inc: { points: -1 } }, { new: true } )
+                                .then(update => {
+                                    // Return rewarded points (0 in this case) and current points of user after the click
+                                    return res.status(200).json({"reward" : prize, "points" :  update.points, "nextPrize" : clicksToNextPrize })
+                                })               
+
+                        }else{
+                            // calculate awarded points. ( -1 for click and add the prize points amount )
+                            const awardedPoints = Number(-1) + Number(prize)
+                            // Find user by id and update points
+                            User
+                                .findByIdAndUpdate( userId, { $inc: { points: awardedPoints } }, { new: true } )
+                                .then(update => {
+                                    // Return rewarded points (0 in this case) and current points of user after the click
+                                    return res.status(200).json({"reward" : prize, "points" :  update.points, "nextPrize" : clicksToNextPrize })
+                                })
+                        }
+                    })
+            }
+
         })
         .catch(error => next(error))
-        .then(e=>{
-
-            // if Not enough points
-            if(startingPoints < 1){
-                return res.status(400).json({'Error' : 'Users points are insufficient'})
-            }else{
-
-                Click
-                .findByIdAndUpdate(id, { $inc: { amount: 1 } }, {new: true } )
-                .then(update => {
-
-                    const prize = checkPrize(update.amount)
-
-                    //Check for user ID
-                    
-
-                    let currentPoints = 0
-
-                    if(prize == 0){
-                        User
-                        .findByIdAndUpdate(userId, { $inc: { points: -1 } }, {new: true } )
-                        .then(update => {
-                            console.log(update.points)
-                            //res.json(update.toJSON())
-                            currentPoints = update.points
-                            //res.json({"points" : update.points })
-                            return res.status(200).json({"reward" : prize, "points" : currentPoints})
-                        })               
-
-                    }else{
-                        const awardedPoints = Number(-1) + Number(prize)
-                        console.log("awarded points", awardedPoints )
-                        User
-                        .findByIdAndUpdate(userId, { $inc: { points: awardedPoints } }, {new: true } )
-                        .then(update => {
-                            console.log(update.points)
-                            //res.json(update.toJSON())
-                            currentPoints = update.points
-                            //res.json({"points" : update.points })
-                            res.json({"reward" : prize, "points" : currentPoints})
-                        })
-                    }
-
-                })
-
-            }
-
-        })
-
 })
 
 

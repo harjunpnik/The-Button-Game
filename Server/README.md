@@ -51,8 +51,8 @@ Below is an example of an response that has successfully passed.
 
 ```JSON
 {
-  "_id": "468a2cffb4497ea6e79c5786100a71a4abd9ae4ddc9f3011266615825c1d87ae",
-  "points": 77
+  "points": 77,
+  "user": "468a2cffb4497ea6e79c5786100a71a4abd9ae4ddc9f3011266615825c1d87ae"
 }
 ```
 
@@ -75,7 +75,7 @@ Allows you to reset users points to 20, if user has 0 points. Returns user id an
 
 ```JSON
 {
-  "_id": "468a2cffb4497ea6e79c5786100a71a4abd9ae4ddc9f3011266615825c1d87ae",
-  "points": 20
+  "points": 20,
+  "user": "468a2cffb4497ea6e79c5786100a71a4abd9ae4ddc9f3011266615825c1d87ae"
 }
 ```

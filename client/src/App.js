@@ -1,6 +1,9 @@
 import React, {useState, useEffect } from 'react'
 import userService from './services/user'
 import clickService from './services/click'
+import Header from './components/Header'
+import Footer from './components/Footer'
+import './index.css'
 
 function App() {
 
@@ -58,6 +61,9 @@ function App() {
 
   return (
     <div>
+
+      <Header/>
+
       test
       <button onClick={() => testClick()}>test</button>
       <br/>
@@ -68,8 +74,12 @@ function App() {
       <div>User: {user}</div>
       <div>Clicks to next prize: {nextPrize} </div>
       <div>amount of points: {points}</div>
+
+
+      <Footer/>
+
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

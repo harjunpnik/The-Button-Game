@@ -32,7 +32,6 @@ function Header() {
     textAlign: 'center',
     margin: '0',
     color: 'white',
-    paddingRight: '20px',
     lineHeight: '40px'
   }
 
@@ -52,12 +51,16 @@ function Header() {
   return (
     <div style={navbarStyle}>
 
-        <img src={logo} alt="Logo" style={imgStyle}/>
-        <h2 style={headerStyle}>BUTTON GAME</h2>
+        <div id="contentContainer">
 
-        <div style={infoDivSyle}>
+            <img src={logo} alt="Logo" style={imgStyle}/>
+            <h2 style={headerStyle}>BUTTON GAME</h2>
 
-            <p style={infoStyle} > INFO </p>
+            <div style={infoDivSyle}>
+
+                <p style={infoStyle} id="infoLink" > INFO </p>
+
+            </div>
 
         </div>
 

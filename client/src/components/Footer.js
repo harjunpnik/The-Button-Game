@@ -32,12 +32,16 @@ function Footer() {
   return (
     <div style={footerStyle}>
     
-        <p style={footerLeftStyle}>The Button Game - 2020</p>
+        <div id="contentContainer">
 
-        <div style={footerRightStyle}> 
-            <a href="https://github.com/harjunpnik/The-Button-Game">
-                <img src={githubLogo} alt="github logo" style={imgStyle}/>
-            </a>
+            <p style={footerLeftStyle}>The Button Game - 2020</p>
+
+            <div style={footerRightStyle}> 
+                <a href="https://github.com/harjunpnik/The-Button-Game">
+                    <img src={githubLogo} alt="github logo" style={imgStyle}/>
+                </a>
+            </div>
+            
         </div>
 
     </div>

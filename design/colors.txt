@@ -1,0 +1,5 @@
+Button - #2962ff (Blue)
+Background - #311b92 (purple) (could have some pattern in the background)
+Footer - #6746c3(Light purple)
+Header - #000063 (Dark purple)
+White - #f5f5f6 (white)

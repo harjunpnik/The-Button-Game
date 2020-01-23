@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react'
 import userService from '../services/user'
 import clickService from '../services/click'
 
-function Main() {
+function Main({points, setPoints}) {
 
 // TODO add validation on frontend of methods 
 // TODO Loading animation?
     
   const [user, setUser] = useState(null)
   const [nextPrize, setNextPrize] = useState(null)
-  const [points, setPoints] = useState(null)
+  //const [points, setPoints] = useState(null)
 
     useEffect(() => {
         const buttonGameUser = window.localStorage.getItem('buttonGameUser')

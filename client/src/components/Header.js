@@ -1,7 +1,8 @@
 import React from 'react'
 import logo from '../images/logo.ico'
+import userService from '../services/user'
 
-function Header({togglePopup, changePopupContent}) {
+function Header({togglePopup, changePopupContent, setPoints}) {
 
   const navbarStyle = {
     margin: '0',
@@ -49,9 +50,41 @@ function Header({togglePopup, changePopupContent}) {
     userSelect: 'none'
   }
 
+  const resetPlayerPoints = () =>{
+    const buttonGameUser = window.localStorage.getItem('buttonGameUser')
+    userService
+    .resetUser(buttonGameUser)
+    .then(res => {
+        setPoints(res.points)
+        
+    }).catch (error => {
+      console.log(error)
+      console.log("too much points or invalid user id")
+      
+    })
+    
+  }
+
   const showInfo = () =>{
     const header = "Info"
-    const infoMessage = ["This is html ", <b>Some other</b>, " and again some other", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed libero arcu, feugiat in tortor non, consectetur sollicitudin elit. Phasellus vehicula iaculis sem, id ultrices diam condimentum a. Phasellus malesuada quam ex, quis aliquam eros placerat non. In hac habitasse platea dictumst. Mauris viverra ut ex vel pharetra. Praesent aliquam nulla ligula, in sagittis turpis efficitur non. Ut sed tellus sit amet lacus venenatis consectetur lacinia ac sapien."]
+    const infoMessage = 
+      ["The button game is a game where every player increase the same counter. The players start with 20 points and each time they press the button they lose 1 point. The points of a player can't be negative. ",
+      "Every 10 clicks a user gets points as a prize. A player can win up to one prize with a single click. If the same click would win many prizes, the player gets the biggest possible prize from the list below. ",
+      <br/>,
+      <br/>,
+      <b> The prizes are as following: </b> ,
+      <li key="1"> <b> 5 points </b> every <b> 10 clicks </b> </li>,
+      <li key="2"> <b> 40 points </b> every <b> 100 clicks </b> </li>,
+      <li key="3"> <b> 250 points </b> every <b> 500 clicks </b> </li>,
+      <br/>,
+      "If a player has 0 points he can reset his points back to 20.",
+      <br/>,
+      <br/>,
+      <b>If your game is not working, try to:</b>,
+      <li key="4"> Refresh your browser </li>,
+      <li key="5"> Try to reset your points <button onClick={() => resetPlayerPoints()}>Reset points to 20</button></li>,
+      <li key="6"> Delete buttonGameUser from local storage and refresh your browser <button>Delete buttonGameUser</button> </li>,
+      ]
     changePopupContent(header, infoMessage)
     togglePopup()
   }

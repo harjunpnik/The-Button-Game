@@ -41,9 +41,9 @@ function Popup({header, message, togglePopup}) {
 
     const renderContent = () =>
     message
-      .map(m =>
+      .map((m,index) =>
         <span
-          key={m}
+          key={index}
         > {m} </span>
       )
 

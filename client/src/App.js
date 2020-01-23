@@ -7,6 +7,8 @@ import './index.css'
 
 function App() {
 
+  const [points, setPoints] = useState(null)
+
   const [showPopup, setShowPopup] = useState(false)
   const [popupHeader, setPopupHeader] = useState("")
   const [popupMessage, setPopupMessage] = useState([])
@@ -26,13 +28,14 @@ function App() {
   return (
     <div>
 
-      <Header togglePopup={togglePopup} changePopupContent={changePopupContent}/>
+      <Header togglePopup={togglePopup} changePopupContent={changePopupContent} setPoints={setPoints}/>
 
-      <Main/>
+      <Main points={points} setPoints={setPoints}/>
       
       {showPopup? <Popup message={popupMessage} togglePopup={togglePopup} header={popupHeader}/> : null}
 
       <Footer/>
+      
 
     </div>
   )

@@ -27,6 +27,7 @@ function Footer() {
   const imgStyle = {
     float: 'right',
     width: '60px',
+    userSelect: 'none'
   }
 
   return (

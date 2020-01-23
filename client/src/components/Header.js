@@ -1,7 +1,7 @@
 import React from 'react'
 import logo from '../images/logo.ico'
 
-function Header() {
+function Header({togglePopup, changePopupContent}) {
 
   const navbarStyle = {
     margin: '0',
@@ -23,7 +23,8 @@ function Header() {
     margin: '0',
     letterSpacing: '2px',
     top: '50%',
-    lineHeight: '110px'
+    lineHeight: '110px',
+    userSelect: 'none'
   }
 
   const infoDivSyle = { 
@@ -32,7 +33,8 @@ function Header() {
     textAlign: 'center',
     margin: '0',
     color: 'white',
-    lineHeight: '40px'
+    lineHeight: '40px',
+    userSelect: 'none'
   }
 
   const infoStyle = {
@@ -43,7 +45,15 @@ function Header() {
   const imgStyle = {
     float: 'left',
     width: '110px',
-    lineHeight: '110px'
+    lineHeight: '110px',
+    userSelect: 'none'
+  }
+
+  const showInfo = () =>{
+    const header = "Info"
+    const infoMessage = ["This is html ", <b>Some other</b>, " and again some other", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed libero arcu, feugiat in tortor non, consectetur sollicitudin elit. Phasellus vehicula iaculis sem, id ultrices diam condimentum a. Phasellus malesuada quam ex, quis aliquam eros placerat non. In hac habitasse platea dictumst. Mauris viverra ut ex vel pharetra. Praesent aliquam nulla ligula, in sagittis turpis efficitur non. Ut sed tellus sit amet lacus venenatis consectetur lacinia ac sapien."]
+    changePopupContent(header, infoMessage)
+    togglePopup()
   }
 
   // TODO  add info text and link
@@ -58,7 +68,7 @@ function Header() {
 
             <div style={infoDivSyle}>
 
-                <p style={infoStyle} id="infoLink" > INFO </p>
+                <p style={infoStyle} id="infoLink" onClick={() => showInfo()}> INFO </p>
 
             </div>
         </div>

@@ -61,7 +61,6 @@ function Header() {
                 <p style={infoStyle} id="infoLink" > INFO </p>
 
             </div>
-
         </div>
 
     </div>

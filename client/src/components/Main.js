@@ -34,11 +34,11 @@ function Main() {
         }
       }, [])
     
-      function saveUserToLocalStorage(id){
+    function saveUserToLocalStorage(id){
         window.localStorage.setItem(
           'buttonGameUser', id
         )
-      }
+    }
     
     
       function testClick(){
@@ -52,15 +52,33 @@ function Main() {
     
       }
     
+
       const clickButton = () =>{
         console.log("Click Test")
-        clickService
-        .updateClicks(user)
-          .then(res => {
-            console.log(res)
-            setPoints(res.points)
-            setNextPrize(res.nextPrize)
-          })
+
+        if(points < 1){
+
+          console.log(points < 1, "not enought points")
+          
+        }else{
+
+          clickService
+          .updateClicks(user)
+            .then(res => {
+
+              console.log(res)
+              console.log(res)
+              setPoints(res.points)
+              setNextPrize(res.nextPrize)
+
+            }).catch (error => {
+              console.log(error)
+              console.log("not enough points or invalid user id")
+              console.log("try refreshing or resetting points")
+            })
+        }
+
+
     
       }
 
@@ -72,7 +90,7 @@ function Main() {
     }
 
     const containerStyle = {
-        margin: '5%',
+        marginTop: '5%',
         backgroundColor: 'white',
         textAlign: 'center'
     }
@@ -89,31 +107,30 @@ function Main() {
         fontWeight: 'bold'
     }
 
+    const prizeTextStyle = {
+        margin: '0',
+        fontSize: '60px',
+        fontWeight: 'bold'
+    }
+
+
+
     return (
         <div style={mainStyle} id="background">
         
             <div style={containerStyle} id="contentContainer">
                 
-                <p style={pointStyle}> {points} </p>
+                <p style={pointStyle}  >{points} </p>
 
                 <p style={pointTextStyle}> POINTS </p>
 
-                <button> click </button>
+                <button id="gameButton" onClick={() => clickButton()} > Click </button>
 
-                <p style={pointTextStyle}> Amount of clicks <br/> to next prize: <br/> {nextPrize} </p>
+                <p style={prizeTextStyle}> Amount of clicks <br/> to next prize: <br/> {nextPrize} </p>
 
                 <br/>
-                <button onClick={() => testClick()}>test</button>
-                <br/>
-                click test
-                <button onClick={() => clickButton()}>clcik</button>
-
-                <div>User: {user}</div>
-                <div>Clicks to next prize: {nextPrize} </div>
-                <div>amount of points: {points}</div>
 
             </div>
-
         </div>
     )
 }

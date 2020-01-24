@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import userService from '../services/user'
 import clickService from '../services/click'
+import shortID from 'short-id'
 
 function Main({points, setPoints, togglePopup, changePopupContent, showNotification}) {
 
@@ -10,6 +11,13 @@ function Main({points, setPoints, togglePopup, changePopupContent, showNotificat
   // States for user and NextPrize, points is located in App,js and is a prop
   const [user, setUser] = useState(null)
   const [nextPrize, setNextPrize] = useState(null)
+
+  // State for animating points 
+  const [keyId, setKeyId] = useState(null)
+  const [pointClassName, setPointClassName] = useState(null)
+
+  // State for rewarded points
+  const [rewardedPoints, setRewardedPoints] = useState(null)
 
     // On pageload search after users localstorage for 'buttonGameUser', if found then use the key, else create a new 
     useEffect(() => {
@@ -79,7 +87,17 @@ function Main({points, setPoints, togglePopup, changePopupContent, showNotificat
               //console.log(res)
               //console.log(res)
               setPoints(res.points)
+              console.log(res.reward)
+              // no reward
+              if(res.reward < 1 )
+                setPointClassName('lose-points')
+              else{
+                setPointClassName('win-points')
+                setRewardPoints(res.reward)
+              }
+
               setNextPrize(res.nextPrize)
+              setKeyId(shortID.generate())
 
             }).catch (error => {
               //console.log(error)
@@ -89,6 +107,14 @@ function Main({points, setPoints, togglePopup, changePopupContent, showNotificat
         }
     
       }
+
+    const setRewardPoints = (amount) =>{
+      setRewardedPoints("+" +  amount)
+
+      setTimeout(() => {
+        setRewardedPoints(null)
+      }, 500)
+    }
 
     // Outer div style
     const mainStyle = {
@@ -109,7 +135,7 @@ function Main({points, setPoints, togglePopup, changePopupContent, showNotificat
     const pointStyle = {
         margin: '0',
         fontSize: '160px',
-        fontWeight: 'bold'
+        fontWeight: 'bold', 
     }
     // Points text style style
     const pointTextStyle = {
@@ -121,8 +147,17 @@ function Main({points, setPoints, togglePopup, changePopupContent, showNotificat
     const prizeTextStyle = {
         margin: '0',
         fontSize: '60px',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
     }
+
+    const rewardStyle = {
+      margin: '0',
+      fontSize: '160px',
+      fontWeight: 'bold',
+      position: 'absolute',
+      color: 'green'
+      
+  }
 
 
 
@@ -131,7 +166,7 @@ function Main({points, setPoints, togglePopup, changePopupContent, showNotificat
         
             <div style={containerStyle} id="contentContainer">
                 
-                <p style={pointStyle}  >{points} </p>
+                <p style={pointStyle}> <span className={pointClassName} key={keyId}>{points}</span> <span style={rewardStyle}> {rewardedPoints} </span>  </p> 
 
                 <p style={pointTextStyle}> POINTS </p>
 

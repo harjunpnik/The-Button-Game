@@ -2,7 +2,7 @@ import React from 'react'
 import logo from '../images/logo.ico'
 import userService from '../services/user'
 
-function Header({togglePopup, changePopupContent, setPoints, showNotification}) {
+function Header({togglePopup, changePopupContent, setPoints, showNotification, setUser}) {
 
   // Outer div style
   const navbarStyle = {
@@ -73,6 +73,21 @@ function Header({togglePopup, changePopupContent, setPoints, showNotification}) 
     
   }
 
+  const getNewUser = () =>{
+    userService
+    .create()
+    .then(res => {
+      //console.log(res)
+      // save to localstorage id with key 'buttonGameUser'
+      window.localStorage.setItem(
+        'buttonGameUser', res.data.user
+      )
+      setUser(res.data.user)
+      setPoints(res.data.points)
+      showNotification("New user saved. Starting at 20 points", false, 5000)
+    })
+  }
+
   // OnClick of INFO button, show popup with following content
   const showInfo = () =>{
     const header = "Info"
@@ -92,7 +107,7 @@ function Header({togglePopup, changePopupContent, setPoints, showNotification}) 
       <b>If your game is not working, try to:</b>,
       <li key="4"> Refresh your browser </li>,
       <li key="5"> Try to reset your points <button onClick={() => resetPlayerPoints()}>Reset points to 20</button></li>,
-      <li key="6"> Delete buttonGameUser from local storage and refresh your browser <button>Delete buttonGameUser</button> </li>,
+      <li key="6"> Get a new user id and start from 20 points <button onClick={() => getNewUser()}>Get new user id</button> </li>,
       ]
     changePopupContent(header, infoMessage)
     togglePopup()

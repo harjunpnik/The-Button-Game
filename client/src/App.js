@@ -7,8 +7,9 @@ import './index.css'
 
 function App() {
 
-  // Points for the game
+  // Points for the game and user for game
   const [points, setPoints] = useState(null)
+  const [user, setUser] = useState(null)
 
   // States for the Popup
   const [showPopup, setShowPopup] = useState(false) //Show popup boolean
@@ -42,9 +43,9 @@ function App() {
   return (
     <div>
 
-      <Header togglePopup={togglePopup} changePopupContent={changePopupContent} setPoints={setPoints} showNotification={showNotification}/>
+      <Header togglePopup={togglePopup} changePopupContent={changePopupContent} setPoints={setPoints} showNotification={showNotification} setUser={setUser}/>
 
-      <Main points={points} setPoints={setPoints} togglePopup={togglePopup} changePopupContent={changePopupContent} showNotification={showNotification}/>
+      <Main points={points} setPoints={setPoints} togglePopup={togglePopup} changePopupContent={changePopupContent} showNotification={showNotification} user={user} setUser={setUser}/>
       
       {showPopup? <Popup message={popupMessage} togglePopup={togglePopup} header={popupHeader} notificationMessage={notificationMessage} isError={isError}/> : null}
 

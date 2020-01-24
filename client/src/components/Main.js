@@ -3,13 +3,13 @@ import userService from '../services/user'
 import clickService from '../services/click'
 import shortID from 'short-id'
 
-function Main({points, setPoints, togglePopup, changePopupContent, showNotification}) {
+function Main({points, setPoints, togglePopup, changePopupContent, showNotification, user, setUser}) {
 
 // TODO add validation on frontend of methods 
 // TODO Loading animation?
    
   // States for user and NextPrize, points is located in App,js and is a prop
-  const [user, setUser] = useState(null)
+  //const [user, setUser] = useState(null)
   const [nextPrize, setNextPrize] = useState(null)
 
   // State for animating points 

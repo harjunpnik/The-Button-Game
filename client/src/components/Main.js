@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react'
 import userService from '../services/user'
 import clickService from '../services/click'
 
-function Main({points, setPoints}) {
+function Main({points, setPoints, togglePopup, changePopupContent, showNotification}) {
 
 // TODO add validation on frontend of methods 
 // TODO Loading animation?
+// Error message component
     
   const [user, setUser] = useState(null)
   const [nextPrize, setNextPrize] = useState(null)
@@ -41,14 +42,19 @@ function Main({points, setPoints}) {
     }
     
     
-      function testClick(){
-        console.log("test")
-        console.log(user)
-        userService
-            .resetUser(user)
-            .then(res => {
-                setPoints(res.points)
-            })
+    function resetPoints(){
+      //console.log("test")
+      console.log(user)
+      userService
+          .resetUser(user)
+          .then(res => {
+              setPoints(res.points)
+              showNotification("Points reset to 20", false, 5000)
+          }).catch (error => {
+            //console.log(error)
+            //console.log("too much points or invalid user id")
+            showNotification("User has too much points or invalid user id", true, 5000)
+          })
     
       }
     
@@ -58,7 +64,15 @@ function Main({points, setPoints}) {
 
         if(points < 1){
 
-          console.log(points < 1, "not enought points")
+          //console.log(points < 1, "not enough points")
+          const header = "Error - Not enough points"
+          const errorMessage = 
+          ["You do not have enough points to play. Do you want to reset your points?",
+          <br/>,
+          <button onClick={() => resetPoints()}>Reset points to 20</button>
+          ]
+          changePopupContent(header, errorMessage)
+          togglePopup()
           
         }else{
 

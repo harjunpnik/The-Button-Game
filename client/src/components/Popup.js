@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Popup({header, message, togglePopup}) {
+function Popup({header, message, togglePopup, notificationMessage, isError}) {
 
     const popupStyle = {
         position: 'fixed',
@@ -18,9 +18,9 @@ function Popup({header, message, togglePopup}) {
         position: 'absolute',
         left: '15%',
         right: '15%',
-        top: '15%',
-        bottom: '15%',
+        top: '20%',
         margin: 'auto',
+        paddingBottom: '8px',
         background: 'white'
     }
 
@@ -39,6 +39,24 @@ function Popup({header, message, togglePopup}) {
         marginRight: '2%',
     }
 
+    // Convert to Spread syntax 
+    const popupNotificationStyle ={
+      error: {
+        color: 'red',
+        fontSize: '20px',
+        marginLeft: '2%',
+        marginRight: '2%',
+        textAlign: 'center',
+      },
+      success: {
+        color: 'green',
+        fontSize: '20px',
+        marginLeft: '2%',
+        marginRight: '2%',
+        textAlign: 'center',
+      }
+    }
+
     const renderContent = () =>
     message
       .map((m,index) =>
@@ -55,6 +73,7 @@ function Popup({header, message, togglePopup}) {
             <h2 style={headerStyle}>{header}</h2>
             
             <div style={popupContentStyle}>{renderContent()}</div>
+  <div style={isError?popupNotificationStyle.error: popupNotificationStyle.success} > {notificationMessage} </div>
         </div>
   </div>
   )

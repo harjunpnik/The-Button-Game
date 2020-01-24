@@ -2,7 +2,7 @@ import React from 'react'
 import logo from '../images/logo.ico'
 import userService from '../services/user'
 
-function Header({togglePopup, changePopupContent, setPoints}) {
+function Header({togglePopup, changePopupContent, setPoints, showNotification}) {
 
   const navbarStyle = {
     margin: '0',
@@ -56,10 +56,12 @@ function Header({togglePopup, changePopupContent, setPoints}) {
     .resetUser(buttonGameUser)
     .then(res => {
         setPoints(res.points)
+        showNotification("Points reset to 20", false, 5000)
         
     }).catch (error => {
-      console.log(error)
-      console.log("too much points or invalid user id")
+      //console.log(error)
+      //console.log("too much points or invalid user id")
+      showNotification("User has too much points or invalid user id", true, 5000)
       
     })
     

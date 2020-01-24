@@ -3,6 +3,7 @@ import githubLogo from '../images/githubIcon.png'
 
 function Footer() {
 
+  // Outer style (background)
   const footerStyle = {
     position: 'fixed',
     left: '0',
@@ -12,7 +13,7 @@ function Footer() {
     color: 'white',
     height: '60px',
   }
-
+  // Footer left text style
   const footerLeftStyle ={
     float: 'left',
     paddingLeft: '2px',
@@ -20,10 +21,11 @@ function Footer() {
     lineHeight: '60px'
   }
 
+  // Footer right style
   const footerRightStyle ={
     float: 'right',
   }
-
+  // Footer right image style
   const imgStyle = {
     float: 'right',
     width: '60px',

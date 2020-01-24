@@ -6,12 +6,12 @@ function Main({points, setPoints, togglePopup, changePopupContent, showNotificat
 
 // TODO add validation on frontend of methods 
 // TODO Loading animation?
-// Error message component
-    
+   
+  // States for user and NextPrize, points is located in App,js and is a prop
   const [user, setUser] = useState(null)
   const [nextPrize, setNextPrize] = useState(null)
-  //const [points, setPoints] = useState(null)
 
+    // On pageload search after users localstorage for 'buttonGameUser', if found then use the key, else create a new 
     useEffect(() => {
         const buttonGameUser = window.localStorage.getItem('buttonGameUser')
         if(buttonGameUser){
@@ -26,25 +26,21 @@ function Main({points, setPoints, togglePopup, changePopupContent, showNotificat
           userService
             .create()
             .then(res => {
-              console.log(res)
-              console.log(res.data.user)
-              saveUserToLocalStorage(res.data.user)
+              //console.log(res)
+              // save to localstorage id with key 'buttonGameUser'
+              window.localStorage.setItem(
+                'buttonGameUser', res.data.user
+              )
               setUser(res.data.user)
               setPoints(res.data.points)
             })
         }
       }, [])
     
-    function saveUserToLocalStorage(id){
-        window.localStorage.setItem(
-          'buttonGameUser', id
-        )
-    }
-    
-    
+    // Reset users points to 20
     function resetPoints(){
       //console.log("test")
-      console.log(user)
+      //console.log(user)
       userService
           .resetUser(user)
           .then(res => {
@@ -58,7 +54,7 @@ function Main({points, setPoints, togglePopup, changePopupContent, showNotificat
     
       }
     
-
+      // Click button sends request to server and increments counter by one, removes a point from user and rewards user based on the click
       const clickButton = () =>{
         console.log("Click Test")
 
@@ -80,47 +76,48 @@ function Main({points, setPoints, togglePopup, changePopupContent, showNotificat
           .updateClicks(user)
             .then(res => {
 
-              console.log(res)
-              console.log(res)
+              //console.log(res)
+              //console.log(res)
               setPoints(res.points)
               setNextPrize(res.nextPrize)
 
             }).catch (error => {
-              console.log(error)
-              console.log("not enough points or invalid user id")
-              console.log("try refreshing or resetting points")
+              //console.log(error)
+              //console.log("not enough points or invalid user id")
+              //console.log("try refreshing or resetting points")
             })
         }
-
-
     
       }
 
+    // Outer div style
     const mainStyle = {
         backgroundColor: '#311b92 ',
-        height: '90vh',
+        height: '85vh',
         width: '100vw',
         position: 'absolute'
     }
 
+    // Inner div style (container)
     const containerStyle = {
-        marginTop: '5%',
+        marginTop: '1%',
         backgroundColor: 'white',
         textAlign: 'center'
     }
 
+    // Number value style
     const pointStyle = {
         margin: '0',
-        fontSize: '200px',
+        fontSize: '160px',
         fontWeight: 'bold'
     }
-
+    // Points text style style
     const pointTextStyle = {
         margin: '0',
-        fontSize: '100px',
+        fontSize: '80px',
         fontWeight: 'bold'
     }
-
+    // Prize text stlye style
     const prizeTextStyle = {
         margin: '0',
         fontSize: '60px',
@@ -142,7 +139,7 @@ function Main({points, setPoints, togglePopup, changePopupContent, showNotificat
 
                 <p style={prizeTextStyle}> Amount of clicks <br/> to next prize: <br/> {nextPrize} </p>
 
-                <br/>
+                
 
             </div>
         </div>

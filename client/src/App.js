@@ -7,28 +7,30 @@ import './index.css'
 
 function App() {
 
+  // Points for the game
   const [points, setPoints] = useState(null)
 
-  const [showPopup, setShowPopup] = useState(false)
-  const [popupHeader, setPopupHeader] = useState("")
-  const [popupMessage, setPopupMessage] = useState([])
-  const [notificationMessage, setNotificationMessage] = useState(null)
-  const [isError, setIsError] = useState(null)
+  // States for the Popup
+  const [showPopup, setShowPopup] = useState(false) //Show popup boolean
+  const [popupHeader, setPopupHeader] = useState("") // Set header
+  const [popupMessage, setPopupMessage] = useState([]) // Set Message, As array. Can include html tags, example: ["This ", <b>is</b>, " a message"]
+  const [notificationMessage, setNotificationMessage] = useState(null) // set notification messsage for user feedback on errors and successes
+  const [isError, setIsError] = useState(null) // setNotification (boolean) status to error or not 
   
-
+  // function to toggle popup
   const togglePopup = () => {
     setShowPopup(!showPopup)
-    console.log(showPopup)
   }
-
+  // Function to change content of Popups
   const changePopupContent = (header, message) =>{
     setPopupHeader(header)
     setPopupMessage(message)
   }
-
+  // Function to show notification on event and timer for message to disappear 
   const showNotification = (notification, error, timer) =>{
     setNotificationMessage(notification)
     setIsError(error)
+    // Wait timer, NOTE: Timer is in MS, not seconds
     setTimeout(() => {
       setNotificationMessage(null)
       setIsError(null)
@@ -47,7 +49,6 @@ function App() {
       {showPopup? <Popup message={popupMessage} togglePopup={togglePopup} header={popupHeader} notificationMessage={notificationMessage} isError={isError}/> : null}
 
       <Footer/>
-      
 
     </div>
   )

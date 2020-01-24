@@ -4,6 +4,7 @@ import userService from '../services/user'
 
 function Header({togglePopup, changePopupContent, setPoints, showNotification}) {
 
+  // Outer div style
   const navbarStyle = {
     margin: '0',
     padding: '0',
@@ -15,6 +16,7 @@ function Header({togglePopup, changePopupContent, setPoints, showNotification}) 
     height: '110px',
   }
 
+  // Header style
   const headerStyle = {
     fontSize: '80px',
     float: 'left',
@@ -28,6 +30,7 @@ function Header({togglePopup, changePopupContent, setPoints, showNotification}) 
     userSelect: 'none'
   }
 
+  // info button div style
   const infoDivSyle = { 
     fontSize: '30px',
     float: 'right',
@@ -38,11 +41,13 @@ function Header({togglePopup, changePopupContent, setPoints, showNotification}) 
     userSelect: 'none'
   }
 
+  // info button div border style
   const infoStyle = {
     border: '4px solid #2962ff',
     padding : '0px 4px 0px 4px',
   }
 
+  // logo style
   const imgStyle = {
     float: 'left',
     width: '110px',
@@ -50,6 +55,7 @@ function Header({togglePopup, changePopupContent, setPoints, showNotification}) 
     userSelect: 'none'
   }
 
+  // Reset player points function for info button 
   const resetPlayerPoints = () =>{
     const buttonGameUser = window.localStorage.getItem('buttonGameUser')
     userService
@@ -67,6 +73,7 @@ function Header({togglePopup, changePopupContent, setPoints, showNotification}) 
     
   }
 
+  // OnClick of INFO button, show popup with following content
   const showInfo = () =>{
     const header = "Info"
     const infoMessage = 
@@ -90,8 +97,6 @@ function Header({togglePopup, changePopupContent, setPoints, showNotification}) 
     changePopupContent(header, infoMessage)
     togglePopup()
   }
-
-  // TODO  add info text and link
 
   return (
     <div style={navbarStyle}>

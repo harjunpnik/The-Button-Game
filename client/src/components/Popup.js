@@ -2,6 +2,7 @@ import React from 'react'
 
 function Popup({header, message, togglePopup, notificationMessage, isError}) {
 
+  //outer div style
     const popupStyle = {
         position: 'fixed',
         width: '100%',
@@ -13,7 +14,7 @@ function Popup({header, message, togglePopup, notificationMessage, isError}) {
         margin: 'auto',
         backgroundColor: 'rgba(0,0,0, 0.5)'
     }
-
+//Inner div style
     const popupInnerStyle = {
         position: 'absolute',
         left: '15%',
@@ -23,7 +24,7 @@ function Popup({header, message, togglePopup, notificationMessage, isError}) {
         paddingBottom: '8px',
         background: 'white'
     }
-
+  // Popup Header style 
     const headerStyle = {
         fontSize: '65px',
         textAlign: 'center', 
@@ -32,14 +33,15 @@ function Popup({header, message, togglePopup, notificationMessage, isError}) {
         margin: '0',
         letterSpacing: '2px',
     }
-
+  // Popup content style  
     const popupContentStyle = {
         fontSize: '20px',
         marginLeft: '2%',
         marginRight: '2%',
     }
 
-    // Convert to Spread syntax 
+  // Convert to Spread syntax
+  // Popup notification style   
     const popupNotificationStyle ={
       error: {
         color: 'red',
@@ -57,6 +59,7 @@ function Popup({header, message, togglePopup, notificationMessage, isError}) {
       }
     }
 
+    // Map out message array content
     const renderContent = () =>
     message
       .map((m,index) =>
@@ -68,12 +71,15 @@ function Popup({header, message, togglePopup, notificationMessage, isError}) {
   return (
     <div style={popupStyle}>
         <div style={popupInnerStyle}>
+            
             <button id="closePopupButton" onClick={togglePopup}>X</button>
             
             <h2 style={headerStyle}>{header}</h2>
             
             <div style={popupContentStyle}>{renderContent()}</div>
-  <div style={isError?popupNotificationStyle.error: popupNotificationStyle.success} > {notificationMessage} </div>
+
+            <div style={isError?popupNotificationStyle.error: popupNotificationStyle.success} > {notificationMessage} </div>
+
         </div>
   </div>
   )

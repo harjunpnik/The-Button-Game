@@ -18,7 +18,8 @@ function Header({togglePopup, changePopupContent, setPoints, showNotification, s
 
   // Header style
   const headerStyle = {
-    fontSize: '80px',
+    //fontSize: '80px',
+    fontSize: '8.25vw',
     float: 'left',
     textAlign: 'center', 
     color: 'white', 

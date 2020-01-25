@@ -26,7 +26,8 @@ function Popup({header, message, togglePopup, notificationMessage, isError}) {
     }
   // Popup Header style 
     const headerStyle = {
-        fontSize: '65px',
+        //fontSize: '65px',
+        fontSize: '6.0vh',
         textAlign: 'center', 
         color: 'black', 
         padding: '0', 

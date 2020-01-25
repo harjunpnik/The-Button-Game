@@ -10,18 +10,644 @@ body {
     margin-left: 5%;
     margin-right: 5%;
 }
+        
 
 
-#contentContainerInner{
-    margin-left: 20%;
-    margin-right: 20%;
+    
+/*Point calssname, used for changing the color of current points and rewarded points*/    
+@keyframes lose-points{0%{color: red;}100%{}}
+
+.lose-points{animation:lose-points .4s cubic-bezier(.455,.03,.515,.955) both}
+    
+@keyframes win-points{0%{color: green;}100%{}}
+    
+.win-points{animation:win-points .6s cubic-bezier(.455,.03,.515,.955) both}
+
+
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+    /* HEADER */
+        /*Outer div style*/
+    #navbarStyle{
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #000063; 
+        top:0;
+        width: 100%; 
+        display:block;
+        height: 55px;
+    }
+        /*info button div style*/
+    #infoDivStyle{
+        font-size: 15px;
+        float: right;
+        text-align: center;
+        margin: 0;
+        color: white;
+        line-height: 20px;
+        user-select: none;
+    }
+        /*info button div border style*/
+    #infoLink{
+        border: 2px solid #2962ff;
+        padding : 0px 2px 0px 2px;
+        
+    }
+    #infoLink:hover{
+        background-color: #2962ff;
+        cursor: pointer;
+    }
+        /* logo style */
+    #logoImg{
+        float: left;
+        width: 55px;
+        line-height: 55px;
+        user-select: none;
+    }
+        /*header style*/
+    #headerStyle{
+        font-size: 20px;
+        float: left;
+        text-align: center; 
+        color: white; 
+        padding: 0; 
+        margin: 0;
+        letter-spacing: 2px;
+        top: 50%;
+        line-height: 55px;
+        user-select: none;
+    }
+
+    /* FOOTER */
+        /*outer div style*/
+    #footerStyle{
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #6746c3;
+        color: white;
+        height: 30px;
+        font-size: 10px;
+    }
+        /*Footer left text style*/
+    #footerLeftStyle{
+        float: left;
+        padding-left: 2px;
+        margin: 0;
+        line-height: 30px
+    }
+        /*Footer right style*/
+    #footerRightStyle{
+        float: right;
+    }
+        /*Footer right image style*/
+    #githubImgStyle{
+        float: right;
+        width: 30px;
+        user-select: none
+    }
+
+    /* Main */
+        /*outer div, base taken from https://leaverou.github.io/css3patterns/#carbon-fibre*/
+    #background{
+        background:
+            radial-gradient(black 15%, transparent 16%) 0 0,
+            radial-gradient(black 15%, transparent 16%) 8px 8px,
+            radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+            radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;    
+        background-color:#282828;
+        background-size:16px 16px;
+        background-color: #311b92 ;
+        height: 85%;
+        width: 100vw;
+        position: absolute;   
+    }
+        /*white backgroudnspacing*/
+    #contentContainerInner{
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-top: 5%;
+        background-color: white;
+        text-align: center;
+        height: 90%;
+    }
+        /*Number value style*/
+    #pointStyle{
+        margin: 0;
+        /*fontSize: 160px;*/
+        font-size: 80px;
+        font-weight: bold;
+    }
+        /*Points text style style*/
+    #pointTextStyle{
+        margin: 0;
+        margin-top: -3.1vh;
+        /*fontSize: 80px;*/
+        font-size: 40px;
+        font-weight: bold
+    }
+        /*clicks to next prize style*/
+    #prizeTextStyle{
+        margin: 0;
+        /*fontSize: 60px;*/
+        font-size: 30px;
+        font-weight: bold;
+    }
+        /*Reward poitn style*/
+    #rewardStyle{
+        margin: 0;
+        margin-left: 3.1vh;
+        /*font-size: 160px;*/
+        font-size: 40px;
+        font-weight: bold;
+        position: absolute;
+        color: green
+    }
+
+        /*click button styling*/
+    #gameButton{
+        cursor: pointer;
+        color: white;
+        background-color: #2962ff;
+        /*fontSize: '15vh',*/
+        font-size: 13vh;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        border-style: solid;
+        border-color: black;
+        /*border-width: 8px;*/
+        border-width: 0.8vh;
+        /*box-shadow: 0 25px #666666;*/
+        box-shadow: 0 2.6vh #666666;
+        /*padding: 25px 60px;*/
+        padding: 2.6vh 6.25vh;
+        /*margin-bottom: 30px;*/
+        margin-bottom: 3.12vh;
+        user-select:none;
+        margin-top: 3vh;
+    }
+    #gameButton:active{
+        /*box-shadow: 0 10px #292929;*/
+        box-shadow: 0 1.04vh #292929;
+        /*transform: translateY(15px);*/
+        transform: translateY(1.5vh);
+    }
+
+    /* POPUP */
+        /**/
+    #closePopupButton{
+        position: absolute;
+        background-color: #2962ff;
+        cursor: pointer;
+        color: white;
+        top: 5px;
+        right: 5px;
+        /*font-size: 40px;*/
+        font-size: 20px;
+        text-align: center;
+        user-select:none;
+        border-style: solid;
+        border-color: black;
+        border-width: 2px;
+        box-shadow: 0 4px #666666;
+    }  
+    #closePopupButton:active{
+        box-shadow: 0 2px #292929;
+        transform: translateY(3px);
+    }
+        /**/
+    #popupStyle{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        background-color: rgba(0,0,0,0.5);
+    }
+        /**/
+    #popupInnerStyle{
+        position: absolute;
+        left: 5%;
+        right: 5%;
+        top: 5%;
+        margin: auto;
+        padding-bottom: 4px;
+        background: white
+    }
+        /**/
+    #headerPopupStyle{
+        /*fontSize: 65px;*/
+        font-size: 30px;
+        text-align: center; 
+        color: black; 
+        padding: 0; 
+        margin: 0;
+        letter-spacing: 2px;
+    }
+    /**/
+    #popupContentStyle{
+        font-size: 12px;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+    .infoButton{
+        font-size: 10px;
+    }
+
 }
 
+@media only screen and (min-height: 560px) {
+        /* HEADER */
+        /*Outer div style*/
+        #navbarStyle{
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #000063; 
+            top:0;
+            width: 100%; 
+            display:block;
+            height: 55px;
+        }
+            /*info button div style*/
+        #infoDivStyle{
+            font-size: 15px;
+            float: right;
+            text-align: center;
+            margin: 0;
+            color: white;
+            line-height: 20px;
+            user-select: none;
+        }
+            /*info button div border style*/
+        #infoLink{
+            border: 2px solid #2962ff;
+            padding : 0px 2px 0px 2px;
+            
+        }
+        #infoLink:hover{
+            background-color: #2962ff;
+            cursor: pointer;
+        }
+            /* logo style */
+        #logoImg{
+            float: left;
+            width: 55px;
+            line-height: 55px;
+            user-select: none;
+        }
+            /*header style*/
+        #headerStyle{
+            font-size: 20px;
+            float: left;
+            text-align: center; 
+            color: white; 
+            padding: 0; 
+            margin: 0;
+            letter-spacing: 2px;
+            top: 50%;
+            line-height: 55px;
+            user-select: none;
+        }
+    
+        /* FOOTER */
+            /*outer div style*/
+        #footerStyle{
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #6746c3;
+            color: white;
+            height: 30px;
+            font-size: 10px;
+        }
+            /*Footer left text style*/
+        #footerLeftStyle{
+            float: left;
+            padding-left: 2px;
+            margin: 0;
+            line-height: 30px
+        }
+            /*Footer right style*/
+        #footerRightStyle{
+            float: right;
+        }
+            /*Footer right image style*/
+        #githubImgStyle{
+            float: right;
+            width: 30px;
+            user-select: none
+        }
+    
+        /* Main */
+            /*outer div, base taken from https://leaverou.github.io/css3patterns/#carbon-fibre*/
+        #background{
+            background:
+                radial-gradient(black 15%, transparent 16%) 0 0,
+                radial-gradient(black 15%, transparent 16%) 8px 8px,
+                radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+                radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;    
+            background-color:#282828;
+            background-size:16px 16px;
+            background-color: #311b92 ;
+            height: 90%;
+            width: 100vw;
+            position: absolute;   
+        }
+            /*white backgroudnspacing*/
+        #contentContainerInner{
+            margin-left: 10%;
+            margin-right: 10%;
+            margin-top: 2%;
+            background-color: white;
+            text-align: center;
+            height: 90%;
+        }
+            /*Number value style*/
+        #pointStyle{
+            margin: 0;
+            /*fontSize: 160px;*/
+            font-size: 80px;
+            font-weight: bold;
+        }
+            /*Points text style style*/
+        #pointTextStyle{
+            margin: 0;
+            margin-top: -3.1vh;
+            /*fontSize: 80px;*/
+            font-size: 40px;
+            font-weight: bold
+        }
+            /*clicks to next prize style*/
+        #prizeTextStyle{
+            margin: 0;
+            /*fontSize: 60px;*/
+            font-size: 30px;
+            font-weight: bold;
+        }
+            /*Reward poitn style*/
+        #rewardStyle{
+            margin: 0;
+            margin-left: 3.1vh;
+            /*font-size: 160px;*/
+            font-size: 40px;
+            font-weight: bold;
+            position: absolute;
+            color: green
+        }
+    
+            /*click button styling*/
+        #gameButton{
+            cursor: pointer;
+            color: white;
+            background-color: #2962ff;
+            /*fontSize: '15vh',*/
+            font-size: 10vh;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            border-style: solid;
+            border-color: black;
+            /*border-width: 8px;*/
+            border-width: 0.8vh;
+            /*box-shadow: 0 25px #666666;*/
+            box-shadow: 0 2.6vh #666666;
+            /*padding: 25px 60px;*/
+            padding: 2.6vh 6.25vh;
+            /*margin-bottom: 30px;*/
+            margin-bottom: 3.12vh;
+            user-select:none;
+            margin-top: 3vh;
+        }
+        #gameButton:active{
+            /*box-shadow: 0 10px #292929;*/
+            box-shadow: 0 1.04vh #292929;
+            /*transform: translateY(15px);*/
+            transform: translateY(1.5vh);
+        }
+    
+        /* POPUP */
+            /**/
+        #closePopupButton{
+            position: absolute;
+            background-color: #2962ff;
+            cursor: pointer;
+            color: white;
+            top: 5px;
+            right: 5px;
+            /*font-size: 40px;*/
+            font-size: 20px;
+            text-align: center;
+            user-select:none;
+            border-style: solid;
+            border-color: black;
+            border-width: 2px;
+            box-shadow: 0 4px #666666;
+        }  
+        #closePopupButton:active{
+            box-shadow: 0 2px #292929;
+            transform: translateY(3px);
+        }
+            /**/
+        #popupStyle{
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            background-color: rgba(0,0,0,0.5);
+        }
+            /**/
+        #popupInnerStyle{
+            position: absolute;
+            left: 5%;
+            right: 5%;
+            top: 5%;
+            margin: auto;
+            padding-bottom: 4px;
+            background: white
+        }
+            /**/
+        #headerPopupStyle{
+            /*fontSize: 65px;*/
+            font-size: 30px;
+            text-align: center; 
+            color: black; 
+            padding: 0; 
+            margin: 0;
+            letter-spacing: 2px;
+        }
+        /**/
+        #popupContentStyle{
+            font-size: 12px;
+            margin-left: 2%;
+            margin-right: 2%;
+        }
+        .infoButton{
+            font-size: 10px;
+        }
+    
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    /* HEADER */
+    /*Outer div style*/
+#navbarStyle{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #000063; 
+    top:0;
+    width: 100%; 
+    display:block;
+    height: 110px;
+}
+    /*info button div style*/
+#infoDivStyle{
+    font-size: 30px;
+    float: right;
+    text-align: center;
+    margin: 0;
+    color: white;
+    line-height: 40px;
+    user-select: none;
+}
+    /*info button div border style*/
+#infoLink{
+    border: 4px solid #2962ff;
+    padding : 0px 4px 0px 4px;
+    
+}
 #infoLink:hover{
     background-color: #2962ff;
     cursor: pointer;
 }
+    /* logo style */
+#logoImg{
+    float: left;
+    width: 110px;
+    line-height: 110px;
+    user-select: none;
+}
+    /*header style*/
+#headerStyle{
+    font-size: 80px;
+    float: left;
+    text-align: center; 
+    color: white; 
+    padding: 0; 
+    margin: 0;
+    letter-spacing: 2px;
+    top: 50%;
+    line-height: 110px;
+    user-select: none;
+}
 
+
+
+/* FOOTER */
+    /*outer div of footer*/
+#footerStyle{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #6746c3;
+    color: white;
+    height: 60px;
+}
+    /*Footer left text style*/
+#footerLeftStyle{
+    float: left;
+    padding-left: 2px;
+    margin: 0;
+    line-height: 60px
+}
+    /*Footer right style*/
+#footerRightStyle{
+    float: right;
+}
+    /*Footer right image style*/
+#githubImgStyle{
+    float: right;
+    width: 60px;
+    user-select: none
+}
+
+
+
+/* Main */
+    /*outer div, base taken from https://leaverou.github.io/css3patterns/#carbon-fibre*/
+#background{
+    background:
+        radial-gradient(black 15%, transparent 16%) 0 0,
+        radial-gradient(black 15%, transparent 16%) 8px 8px,
+        radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+        radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;    
+    background-color:#282828;
+    background-size:16px 16px;
+    background-color: #311b92 ;
+    height: 85%;
+    width: 100vw;
+    position: absolute;   
+}
+    /*white backgroudnspacing*/
+#contentContainerInner{
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 3%;
+    background-color: white;
+    text-align: center;
+    height: 90%;
+}
+    /*Number value style*/
+#pointStyle{
+    margin: 0;
+    /*fontSize: 160px;*/
+    font-size: 15vh;
+    font-weight: bold;
+}
+    /*Points text style style*/
+#pointTextStyle{
+    margin: 0;
+    margin-top: -3.1vh;
+    /*fontSize: 80px;*/
+    font-size: 8vh;
+    font-weight: bold
+}
+    /*clicks to next prize style*/
+#prizeTextStyle{
+    margin: 0;
+    /*fontSize: 60px;*/
+    font-size: 7vh;
+    font-weight: bold;
+}
+    /*Reward poitn style*/
+#rewardStyle{
+    margin: 0;
+    margin-left: 3.1vh;
+    /*font-size: 160px;*/
+    font-size: 15vh;
+    font-weight: bold;
+    position: absolute;
+    color: green
+}
+
+    /*click button styling*/
 #gameButton{
     cursor: pointer;
     color: white;
@@ -44,14 +670,17 @@ body {
     user-select:none;
     margin-top: 3vh;
 }
-    
 #gameButton:active{
     /*box-shadow: 0 10px #292929;*/
     box-shadow: 0 1.04vh #292929;
     /*transform: translateY(15px);*/
     transform: translateY(1.5vh);
 }
-    
+
+
+
+/* POPUP */
+    /**/
 #closePopupButton{
     position: absolute;
     background-color: #2962ff;
@@ -67,34 +696,52 @@ body {
     border-color: black;
     border-width: 4px;
     box-shadow: 0 8px #666666;
-}
-    
+}  
 #closePopupButton:active{
     box-shadow: 0 2px #292929;
     transform: translateY(6px);
 }
-    
-/*
-https://leaverou.github.io/css3patterns/#carbon-fibre
-*/
-#background{
-    background:
-        radial-gradient(black 15%, transparent 16%) 0 0,
-        radial-gradient(black 15%, transparent 16%) 8px 8px,
-        radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
-        radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;    
-    background-color:#282828;
-    background-size:16px 16px;   
+    /**/
+#popupStyle{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+    /**/
+ #popupInnerStyle{
+    position: absolute;
+    left: 15%;
+    right: 15%;
+    top: 20%;
+    margin: auto;
+    padding-bottom: 8px;
+    background: white
+}
+    /**/
+#headerPopupStyle{
+    /*fontSize: 65px;*/
+    font-size: 6.0vh;
+    text-align: center; 
+    color: black; 
+    padding: 0; 
+    margin: 0;
+    letter-spacing: 2px;
+}
+/**/
+#popupContentStyle{
+    font-size: 20px;
+    margin-left: 2%;
+    margin-right: 2%;
 }
     
-    
-@keyframes lose-points{0%{color: red;}100%{}}
+}
 
-.lose-points{animation:lose-points .4s cubic-bezier(.455,.03,.515,.955) both}
-    
-@keyframes win-points{0%{color: green;}100%{}}
-    
-.win-points{animation:win-points .6s cubic-bezier(.455,.03,.515,.955) both}
 
 
 

@@ -114,71 +114,22 @@ function Main({points, setPoints, togglePopup, changePopupContent, showNotificat
     }, 500)
   }
 
-  // Outer div style
-  const mainStyle = {
-    backgroundColor: '#311b92 ',
-    height: '85%',
-    width: '100vw',
-    position: 'absolute',
-  }
-
-  // Inner div style (container)
-  const containerStyle = {
-    marginTop: '1%',
-    backgroundColor: 'white',
-    textAlign: 'center',
-    height: '90%',
-  }
-
-  // Number value style
-  const pointStyle = {
-    margin: '0',
-    //fontSize: '160px',
-    fontSize: '15vh',
-    fontWeight: 'bold', 
-  }
-  // Points text style style
-  const pointTextStyle = {
-    margin: '0',
-    marginTop: '-3.1vh',
-    //fontSize: '80px',
-    fontSize: '8vh',
-    fontWeight: 'bold'
-  }
-  // Prize text stlye style
-  const prizeTextStyle = {
-    margin: '0',
-    //fontSize: '60px',
-    fontSize: '7vh',
-    fontWeight: 'bold',
-  }
-
-  const rewardStyle = {
-    margin: '0',
-    marginLeft: '3.1vh',
-    //fontSize: '160px',
-    fontSize: '15vh',
-    fontWeight: 'bold',
-    position: 'absolute',
-    color: 'green'
-  }
-
-    return (
-      <div style={mainStyle} id="background">
-        
-        <div style={containerStyle} id="contentContainerInner">
+  return (
+    <div  id="background" >
+      
+      <div id="contentContainerInner">
                 
-          <p style={pointStyle}> <span className={pointClassName} key={keyId}>{points}</span> <span style={rewardStyle}> {rewardedPoints} </span>  </p> 
+        <p id="pointStyle"> <span className={pointClassName} key={keyId}>{points}</span> <span id="rewardStyle"> {rewardedPoints} </span>  </p> 
 
-          <p style={pointTextStyle}> POINTS </p>
+        <p id="pointTextStyle"> POINTS </p>
 
-          <button id="gameButton" onClick={() => clickButton()} > Click </button>
+        <button id="gameButton" onClick={() => clickButton()} > Click </button>
 
-          <p style={prizeTextStyle}> Clicks to next prize: <br/> {nextPrize} </p>
+        <p id="prizeTextStyle"> Clicks to next prize: <br/> {nextPrize} </p>
 
-        </div>
       </div>
-    )
+    </div>
+  )
 }
 
 export default Main

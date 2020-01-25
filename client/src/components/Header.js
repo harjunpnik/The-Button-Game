@@ -4,58 +4,6 @@ import userService from '../services/user'
 
 function Header({togglePopup, changePopupContent, setPoints, showNotification, setUser}) {
 
-  // Outer div style
-  const navbarStyle = {
-    margin: '0',
-    padding: '0',
-    overflow: 'hidden',
-    backgroundColor: '#000063', 
-    top:'0',
-    width: '100%', 
-    display:'block',
-    height: '110px',
-  }
-
-  // Header style
-  const headerStyle = {
-    //fontSize: '80px',
-    fontSize: '6.25vw',
-    float: 'left',
-    textAlign: 'center', 
-    color: 'white', 
-    padding: '0', 
-    margin: '0',
-    letterSpacing: '2px',
-    top: '50%',
-    lineHeight: '110px',
-    userSelect: 'none'
-  }
-
-  // info button div style
-  const infoDivSyle = { 
-    fontSize: '30px',
-    float: 'right',
-    textAlign: 'center',
-    margin: '0',
-    color: 'white',
-    lineHeight: '40px',
-    userSelect: 'none'
-  }
-
-  // info button div border style
-  const infoStyle = {
-    border: '4px solid #2962ff',
-    padding : '0px 4px 0px 4px',
-  }
-
-  // logo style
-  const imgStyle = {
-    float: 'left',
-    width: '110px',
-    lineHeight: '110px',
-    userSelect: 'none'
-  }
-
   // Reset player points function for info button 
   const resetPlayerPoints = () =>{
     const buttonGameUser = window.localStorage.getItem('buttonGameUser')
@@ -109,8 +57,8 @@ function Header({togglePopup, changePopupContent, setPoints, showNotification, s
       <br/>,
       <b>If your game is not working, try to:</b>,
       <li key="4"> Refresh your browser </li>,
-      <li key="5"> Try to reset your points <button onClick={() => resetPlayerPoints()}>Reset points to 20</button></li>,
-      <li key="6"> Get a new user id and start from 20 points <button onClick={() => getNewUser()}>Get new user id</button> </li>,
+      <li key="5"> Try to reset your points <button className="infoButton" onClick={() => resetPlayerPoints()}>Reset points to 20</button></li>,
+      <li key="6"> Get a new user id and start from 20 points <button className="infoButton" onClick={() => getNewUser()}>Get new user id</button> </li>,
       ]
     // Change content of popup window and show it 
     changePopupContent(header, infoMessage)
@@ -118,16 +66,16 @@ function Header({togglePopup, changePopupContent, setPoints, showNotification, s
   }
 
   return (
-    <div style={navbarStyle}>
+    <div id="navbarStyle">
 
       <div id="contentContainer">
 
-        <img src={logo} alt="Logo" style={imgStyle}/>
-        <h2 style={headerStyle}>BUTTON GAME</h2>
+        <img src={logo} alt="Logo" id="logoImg"/>
+        <h2 id="headerStyle">BUTTON GAME</h2>
 
-        <div style={infoDivSyle}>
+        <div id="infoDivStyle">
 
-          <p style={infoStyle} id="infoLink" onClick={() => showInfo()}> INFO </p>
+          <p id="infoLink" onClick={() => showInfo()}> INFO </p>
 
         </div>
 

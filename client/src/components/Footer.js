@@ -3,45 +3,16 @@ import githubLogo from '../images/githubIcon.png'
 
 function Footer() {
 
-  // Outer style (background)
-  const footerStyle = {
-    position: 'fixed',
-    left: '0',
-    bottom: '0',
-    width: '100%',
-    backgroundColor: '#6746c3',
-    color: 'white',
-    height: '60px',
-  }
-  // Footer left text style
-  const footerLeftStyle ={
-    float: 'left',
-    paddingLeft: '2px',
-    margin: '0',
-    lineHeight: '60px'
-  }
-
-  // Footer right style
-  const footerRightStyle ={
-    float: 'right',
-  }
-  // Footer right image style
-  const imgStyle = {
-    float: 'right',
-    width: '60px',
-    userSelect: 'none'
-  }
-
   return (
-    <div style={footerStyle}>
+    <div  id="footerStyle">
     
       <div id="contentContainer">
 
-        <p style={footerLeftStyle}>The Button Game - 2020</p>
+        <p id="footerLeftStyle">The Button Game - 2020</p>
 
-        <div style={footerRightStyle}> 
+        <div id="footerRightStyle"> 
           <a href="https://github.com/harjunpnik/The-Button-Game">
-            <img src={githubLogo} alt="github logo" style={imgStyle}/>
+            <img src={githubLogo} alt="github logo" id="githubImgStyle"/>
           </a>
         </div>
             

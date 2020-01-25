@@ -7,13 +7,13 @@ import './index.css'
 
 function App() {
 
-  // Points for the game and user for game
+  // Points for the game and userId for game
   const [points, setPoints] = useState(null)
   const [user, setUser] = useState(null)
 
   // States for the Popup
   const [showPopup, setShowPopup] = useState(false) //Show popup boolean
-  const [popupHeader, setPopupHeader] = useState("") // Set header
+  const [popupHeader, setPopupHeader] = useState('') // Set header
   const [popupMessage, setPopupMessage] = useState([]) // Set Message, As array. Can include html tags, example: ["This ", <b>is</b>, " a message"]
   const [notificationMessage, setNotificationMessage] = useState(null) // set notification messsage for user feedback on errors and successes
   const [isError, setIsError] = useState(null) // setNotification (boolean) status to error or not 

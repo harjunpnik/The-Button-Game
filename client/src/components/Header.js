@@ -19,7 +19,7 @@ function Header({togglePopup, changePopupContent, setPoints, showNotification, s
   // Header style
   const headerStyle = {
     //fontSize: '80px',
-    fontSize: '8.25vw',
+    fontSize: '6.25vw',
     float: 'left',
     textAlign: 'center', 
     color: 'white', 
@@ -62,27 +62,28 @@ function Header({togglePopup, changePopupContent, setPoints, showNotification, s
     userService
     .resetUser(buttonGameUser)
     .then(res => {
+        // Change points and show notification that reset was successfull
         setPoints(res.points)
         showNotification("Points reset to 20", false, 5000)
         
     }).catch (error => {
-      //console.log(error)
-      //console.log("too much points or invalid user id")
+      // Tell user that user has too many points or invalid user id
       showNotification("User has too much points or invalid user id", true, 5000)
       
     })
     
   }
 
+  // Gets new user id and sets points to starting points (20 points)
   const getNewUser = () =>{
     userService
     .create()
     .then(res => {
-      //console.log(res)
       // save to localstorage id with key 'buttonGameUser'
       window.localStorage.setItem(
         'buttonGameUser', res.data.user
       )
+      // Set points and user id, show notification that it was successfull
       setUser(res.data.user)
       setPoints(res.data.points)
       showNotification("New user saved. Starting at 20 points", false, 5000)
@@ -91,6 +92,7 @@ function Header({togglePopup, changePopupContent, setPoints, showNotification, s
 
   // OnClick of INFO button, show popup with following content
   const showInfo = () =>{
+    // Set header text and info message for popup window
     const header = "Info"
     const infoMessage = 
       ["The button game is a game where every player increase the same counter. The players start with 20 points and each time they press the button they lose 1 point. The points of a player can't be negative. ",
@@ -110,6 +112,7 @@ function Header({togglePopup, changePopupContent, setPoints, showNotification, s
       <li key="5"> Try to reset your points <button onClick={() => resetPlayerPoints()}>Reset points to 20</button></li>,
       <li key="6"> Get a new user id and start from 20 points <button onClick={() => getNewUser()}>Get new user id</button> </li>,
       ]
+    // Change content of popup window and show it 
     changePopupContent(header, infoMessage)
     togglePopup()
   }
@@ -117,17 +120,18 @@ function Header({togglePopup, changePopupContent, setPoints, showNotification, s
   return (
     <div style={navbarStyle}>
 
-        <div id="contentContainer">
+      <div id="contentContainer">
 
-            <img src={logo} alt="Logo" style={imgStyle}/>
-            <h2 style={headerStyle}>BUTTON GAME</h2>
+        <img src={logo} alt="Logo" style={imgStyle}/>
+        <h2 style={headerStyle}>BUTTON GAME</h2>
 
-            <div style={infoDivSyle}>
+        <div style={infoDivSyle}>
 
-                <p style={infoStyle} id="infoLink" onClick={() => showInfo()}> INFO </p>
+          <p style={infoStyle} id="infoLink" onClick={() => showInfo()}> INFO </p>
 
-            </div>
         </div>
+
+      </div>
 
     </div>
   )

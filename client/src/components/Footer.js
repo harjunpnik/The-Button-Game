@@ -35,17 +35,17 @@ function Footer() {
   return (
     <div style={footerStyle}>
     
-        <div id="contentContainer">
+      <div id="contentContainer">
 
-            <p style={footerLeftStyle}>The Button Game - 2020</p>
+        <p style={footerLeftStyle}>The Button Game - 2020</p>
 
-            <div style={footerRightStyle}> 
-                <a href="https://github.com/harjunpnik/The-Button-Game">
-                    <img src={githubLogo} alt="github logo" style={imgStyle}/>
-                </a>
-            </div>
-            
+        <div style={footerRightStyle}> 
+          <a href="https://github.com/harjunpnik/The-Button-Game">
+            <img src={githubLogo} alt="github logo" style={imgStyle}/>
+          </a>
         </div>
+            
+      </div>
 
     </div>
   )

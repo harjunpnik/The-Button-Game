@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:3001/api/click/'
+const baseUrl = '/api/click/'
 
 // Update clicks, needs user id
 const updateClicks = (id) => {

@@ -1,5 +1,7 @@
 # The-Button-Game
 
+#### The combined final project is located in the production folder
+
 Here you can find the game hosted on Heroku:
 
 [https://the-new-button-game.herokuapp.com/](https://the-new-button-game.herokuapp.com/)

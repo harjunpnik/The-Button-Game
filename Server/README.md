@@ -2,6 +2,11 @@
 
 Button game server is a REST API written in NodeJS with a MongoDB database.
 
+## Notes
+
+The server has automated creation of the click collection. If the server when started cannot find a click database with an entry for the clicks, then it will create a new entry to "Click" collection.
+
+
 ## Installation
 
 To install all the node packages, use:

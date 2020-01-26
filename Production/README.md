@@ -1,6 +1,15 @@
-# Server - NodeJS/MongoDB REST API
+# Production
+
+This is the production build that has been deployed to heroku. [https://the-new-button-game.herokuapp.com/](https://the-new-button-game.herokuapp.com/)
+
+# Server/api documentation
 
 Button game server is a REST API written in NodeJS with a MongoDB database.
+
+## Notes
+
+The server has automated creation of the click collection. If the server when started cannot find a click database with an entry for the clicks, then it will create a new entry to "Click" collection.
+
 
 ## Installation
 

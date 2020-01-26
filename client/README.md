@@ -27,6 +27,6 @@ The userId is saved to local storage of the browser. If a user has a stored id t
 
 ### Example images
 
-![Site web version](https://github.com/harjunpnik/The-Button-Game/tree/master/design/web.JPG)
+![Site web version](https://github.com/harjunpnik/The-Button-Game/blob/master/design/web.PNG)
 
-![Site mobile version](https://github.com/harjunpnik/The-Button-Game/tree/master/design/mobile.JPG)
+![Site mobile version](https://github.com/harjunpnik/The-Button-Game/blob/master/design/mobile.PNG)
